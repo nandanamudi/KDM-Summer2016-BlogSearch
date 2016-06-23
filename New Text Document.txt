@@ -102,22 +102,7 @@ object SparkW2VML {
     println("TOP WORDS: \n\n"+ topWords.mkString("\n"))
 
 
-    //Word2Vec Model Generation
-
-    val word2Vec = new Word2Vec()
-      .setInputCol("filteredWords")
-      .setOutputCol("result")
-      .setVectorSize(3)
-      .setMinCount(0)
-    val model = word2Vec.fit(ngramDataFrame)
-
-    //Finding synonyms for TOP TFIDF Words using Word2Vec Model
-    topWords.foreach(f => {
-      println(f._1+"  : ")
-      val result = model.findSynonyms(f._1, 3)
-      result.take(3).foreach(println)
-      println
-    })
-
+    
     spark.stop()
   }
+
