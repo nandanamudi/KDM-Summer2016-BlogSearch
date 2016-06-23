@@ -81,3 +81,43 @@ object SparkW2VML {
   }
 
 }
+
+
+
+
+    //Stop Word Remover
+    val remover = new StopWordsRemover()
+      .setInputCol("words")
+      .setOutputCol("filteredWords")
+    val processedWordData = remover.transform(wordsData)
+
+    //NGram
+    val ngram = new NGram().setInputCol("filteredWords").setOutputCol("ngrams")
+    val ngramDataFrame = ngram.transform(processedWordData)
+    ngramDataFrame.take(3).foreach(println)
+    println(ngramDataFrame.printSchema())
+
+    //TFIDF TopWords
+    val topWords = TFIDF.getTopTFIDFWords(sc, ngramDataFrame.select("filteredWords").rdd)
+    println("TOP WORDS: \n\n"+ topWords.mkString("\n"))
+
+
+    //Word2Vec Model Generation
+
+    val word2Vec = new Word2Vec()
+      .setInputCol("filteredWords")
+      .setOutputCol("result")
+      .setVectorSize(3)
+      .setMinCount(0)
+    val model = word2Vec.fit(ngramDataFrame)
+
+    //Finding synonyms for TOP TFIDF Words using Word2Vec Model
+    topWords.foreach(f => {
+      println(f._1+"  : ")
+      val result = model.findSynonyms(f._1, 3)
+      result.take(3).foreach(println)
+      println
+    })
+
+    spark.stop()
+  }
