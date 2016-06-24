@@ -48,67 +48,7 @@ public class CreatePostCode extends HttpServlet {
 		
 		if(option.equals("data12"))
 		{
-			 pipeline = new StanfordCoreNLP("sentiment.properties");
-			String post = request.getParameter("post");
-			 System.out.println(post);
-			 int mainSentiment = 0;
-		        if (post != null && post.length() > 0) {
-		            int longest = 0;
-		            Annotation annotation = pipeline.process(post);
-		            for (CoreMap sentence : annotation
-		                    .get(CoreAnnotations.SentencesAnnotation.class)) {
-		                Tree tree = sentence
-		                        .get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
-		                int sentiment = RNNCoreAnnotations.getPredictedClass(tree);
-		                String partText = sentence.toString();
-		                if (partText.length() > longest) {
-		                    mainSentiment = sentiment;
-		                    longest = partText.length();
-		                }
-
-		            }
-		        }
-		        if(mainSentiment==0)
-		        {
-		        	String a="<font color=red size=4>Fully Negative Content</font>";
-		        	request.setAttribute("src", a); 
-		        	response.setCharacterEncoding("UTF-8"); 
-		        	response.getWriter().print(a);
-		        }
-		        else if(mainSentiment==1)
-		        {
-		        	String a="<font color=orange size=4>Negative Content</font>";
-		        	request.setAttribute("src", a); 
-		        	response.setCharacterEncoding("UTF-8"); 
-		        	response.getWriter().print(a);
-		        }
-		        else if(mainSentiment==2)
-		        {
-		        	String a="<font color=purple size=4>Neutral Content</font>";
-		        	request.setAttribute("src", a); 
-		        	response.setCharacterEncoding("UTF-8"); 
-		        	response.getWriter().print(a);
-		        }
-		        else if(mainSentiment==3)
-		        {
-		        	String a="<font color=lightgreen size=4>Good Content</font>";
-		        	request.setAttribute("src", a); 
-		        	response.setCharacterEncoding("UTF-8"); 
-		        	response.getWriter().print(a);
-		        	
-		        }
-		        else if(mainSentiment==4)
-		        {
-		        	String a="<font color=green size=4>Excellent Content</font>";
-		        	request.setAttribute("src", a); 
-		        	response.setCharacterEncoding("UTF-8"); 
-		        	response.getWriter().print(a);
-		        }
-		        else
-		        {
-		        	// System.out.println(mainSentiment);
-		        }
-		        
+			 
 			
 		}
 		else
