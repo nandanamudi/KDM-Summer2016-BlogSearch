@@ -1,0 +1,27 @@
+<html>
+<body>
+<div id="blogContainer"></div>
+  <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+$.ajax({
+    url: 'http://www.blogger.com/feeds/4681907881116887933/posts/default?alt=json-in-script',
+    type: 'get',
+    dataType: "jsonp",
+    success: function(data){
+     $.each(data.feed.entry, function(i,item){       
+            $('#blogContainer').append('<div class="blogItem"><h2>' 
+                   + data.feed.entry[i].title.$t + '<span class="author"> by ' 
+                   + data.feed.entry[i].author[0].email.$t + '</span></h2>' 
+                   + data.feed.entry[i].content.$t 
+                   + '<br clear="all"></div>');
+        });
+    }
+});
+});
+</script>
+</body>
+</html>
+

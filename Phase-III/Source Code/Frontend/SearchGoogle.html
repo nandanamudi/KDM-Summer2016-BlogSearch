@@ -1,0 +1,63 @@
+<html>
+<head>
+   <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>Google Search</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  var customSearchControl = null;
+  function executeQuery() {
+    var textNode = document.getElementById('field');
+    if ((textNode.value == '')) {
+	customSearchControl.clearAllResults();
+    } else {
+      customSearchControl.execute(textNode.value);
+    }
+  }
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    customSearchControl = new google.search.CustomSearchControl('007901521029559732954:j0w97selnj0');
+    customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchResultsOnly();     
+    customSearchControl.draw('cse_g', options);
+  }, true);
+</script>
+</head>
+
+<body>
+
+	<div id="page-wrap">
+		<div id="inside">		
+		
+			<div id="left-sidebar">
+            
+		<input type="text" name="field" id="field" onkeyup="executeQuery();" />
+		
+       </div>
+
+			</div>
+	
+			<div id="main-content">
+            
+          
+						
+				<div id="cse_g" style="margin:20px;"></div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			
+		
+		
+		</div>
+		
+		
+	
+	</div>
+
+</body>
+
+</html>
