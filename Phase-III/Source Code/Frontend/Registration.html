@@ -1,0 +1,277 @@
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Blogger Locale</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet" />
+
+    <link href="css/animate.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+  
+    <style>
+        .pace .pace-progress {
+            background: #f0f0f1;
+        }
+
+        .noresize {
+            resize: none;
+        }
+    </style>
+    
+    <script type="text/javascript">
+    
+   function validate()
+   {
+        var name = document.getElementById('name').value;
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var cpassword = document.getElementById('cpassword').value;
+        var emailid = document.getElementById('emailid').value;
+        var address = document.getElementById('address').value;
+
+        if (name.length == 0) {
+            alert("Please input a name");
+            return false;
+        } 
+        else if (username.length == 0) {
+            alert("Please input a username");
+             return false;
+        } 
+        else if (password.length == 0) {
+            alert("Please input a password");
+             return false;
+        }
+        else if (cpassword.length == 0) {
+            alert("Please input a confirm password");
+             return false;
+        }
+         else if (password!=cpassword) {
+            alert("Please check the confirm password");
+             return false;
+        }
+         else if (emailid.length == 0) {
+            alert("Please input an email id");
+             return false;
+        }
+         else if (address.length == 0) {
+            alert("Please input an address");
+             return false;
+        }
+        else{
+            return true;
+        }
+        
+  }
+
+    
+    
+    </script>
+    
+    
+    
+</head>
+
+<body>
+    <div id="wrapper" style="background-color: #008B8B">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="images/11.jpg" width="150" height="100" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"><span class="block m-t-xs"><strong class="font-bold">A Place for sharing ideas</strong>
+<!--                                 </span><span class="text-muted text-xs block">UMKC Student<b class="caret"></b></span> </span></a> -->
+<!--                             <ul class="dropdown-menu animated fadeInRight m-t-xs"> -->
+<!--                                 <li><a href="profile.aspx">Profile</a></li> -->
+<!--                                 <li class="divider"></li> -->
+<!--                                 <li><a href="logout.aspx">Logout</a></li> -->
+<!--                             </ul> -->
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="nav metismenu" id="side-menu1">
+                    <li>
+                        <a href="PublicSearch.html"><i class="fa fa-search" style="color: white;"></i><span class="nav-label" style="color: white;">Blogger Search</span></a>
+                    </li>
+                    <li>
+                        <a href="SpecialFeatures.html"><i class="fa fa-flag" style="color: white;"></i><span class="nav-label" style="color: white;">Special Features</span></a>
+                    </li>
+                    <li>
+                        <a href="help.html"><i class="fa fa-question" style="color: white;"></i><span class="nav-label" style="color: white;">Help/Queries</span></a>
+                    </li>
+                    <li>
+                        <a href="contact.html"><i class="fa fa-phone" style="color: white;"></i><span class="nav-label" style="color: white;">Contact Us</span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #008B8B !important;">
+                    <div class="navbar-header" style="width: 400px;">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-warning visible-xs " href="#"><i class="fa fa-bars"></i></a>
+                        <h1 class="hidden-xs app-brand" style="display: inline; position: relative; top: 12px; color: white; font-size: 30px; margin-left: 28px; font-family: 'Times New Roman', Times, serif; font-weight: 300;">Blogger Locale</h1>
+                        <h3 class="visible-xs-inline-block app-brand" style="display: inline; position: relative; top: 16px; color: white; font-size: 16px; font-family: 'Times New Roman', Times, serif;">Blogger Locale</h3>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+
+                        <li>
+                            <a href="LoginPage.html">
+                                <i class="fa fa-sign-out" style="color: white"></i><span style="color: white; font-family: 'Times New Roman';">Home</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                        
+                        
+                        
+                 <!-- Body Content -->
+ 
+ 
+ <div class="ibox-title">
+        <h5><strong>User Registration Form</strong></h5>
+        <div class="ibox-content">
+            <form class="form-horizontal" onsubmit="return validate()" action="RegistrationCode" method="post">
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Name</label>
+                    <div class="col-md-5">
+                        <input type="text" name="name" id="name"  class="form-control">
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">User Name</label>
+                    <div class="col-md-5">
+                        <input type="text" name="username" id="username" class="form-control">
+                    </div>
+                </div>              
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Password</label>
+                    <div class="col-md-5">
+                        <input type="password" name="password" id="password" class="form-control" />
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Confirm Password</label>
+                    <div class="col-md-5">
+                        <input type="password" name="cpassword" id="cpassword"  class="form-control" />
+                    </div>
+                </div>
+                 <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Email ID</label>
+                    <div class="col-md-5">
+                        <input type="text" name="emailid" id="emailid"  class="form-control" />
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>               
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Address</label>
+                    <div class="col-lg-5">
+                        <textarea name="address" id="address" rows="4" class="form-control noresize"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-3">
+                    <input class="btn btn-sm btn-primary" id="submit" type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    <!-- Footer Content -->
+    
+ 
+   </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer" style="background-color: white">
+                <div class="pull-right" style="color:#008B8B; font-family:'Times New Roman';font-size:medium;">
+                    <strong>Copyright</strong> Blogger Locale &copy; 2016
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="js/plugins/datatables/datatables.min.js"></script>
+
+    <!-- Flot -->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity -->
+    <script src="js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+
+    <script src="js/pages/datatable.js"></script>
+
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+</body>
+</html>
+ 
+    
+    
+ 
