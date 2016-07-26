@@ -1,0 +1,203 @@
+ <!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Blogger Locale</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet" />
+
+    <link href="css/animate.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+  
+    <style>
+        .pace .pace-progress {
+            background: #f0f0f1;
+        }
+
+        .noresize {
+            resize: none;
+        }
+    </style>  
+    
+     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+     <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+  <script type="text/javascript"> 
+  var customSearchControl = null;
+  function executeQuery() {
+    var textNode = document.getElementById('field');
+    if ((textNode.value == '')) {
+	customSearchControl.clearAllResults();
+    } else {
+      customSearchControl.execute(textNode.value);
+    }
+  }
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    customSearchControl = new google.search.CustomSearchControl('007901521029559732954:j0w97selnj0');
+    customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchResultsOnly();     
+    customSearchControl.draw('results', options);
+  }, true);
+</script>
+     
+</head>
+
+<body>
+    <div id="wrapper" style="background-color: #008B8B">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="images/photo.jpg" width="150" height="100" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"><span class="block m-t-xs"><strong class="font-bold">Ashok Yaganti</strong>
+                                </span><span class="text-muted text-xs block">UMKC Student<b class="caret"></b></span> </span></a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li class="divider"></li>
+                                <li><a href="Logout.html">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="nav metismenu" id="side-menu1">
+                    <li>
+                        <a href="UserHome.html"><i class="fa fa-pencil" style="color: white;"></i><span class="nav-label" style="color: white;">Create Post</span></a>
+                    </li>
+                     <li>
+                        <a href="TopicDiscovery.html"><i class="fa fa-asterisk" style="color: white;"></i><span class="nav-label" style="color: white;">Ontology Design</span></a>
+                    </li>
+                    <li>
+                        <a href="EditPost.html"><i class="fa fa-remove" style="color: white;"></i><span class="nav-label" style="color: white;">Edit/Delete Post</span></a>
+                    </li>
+                     <li>
+                        <a href="SemanticSearch.html"><i class="fa fa-search" style="color: white;"></i><span class="nav-label" style="color: white;">Blogger Semantic Search</span></a>
+                    </li>
+                    <li>
+                        <a href="SearchPost.html"><i class="fa fa-search" style="color: white;"></i><span class="nav-label" style="color: white;">Blogger Search</span></a>
+                    </li>
+                    <li>
+                        <a href="GlobalSearch.html"><i class="fa fa-google" style="color: white;"></i><span class="nav-label" style="color: white;">Google Search</span></a>
+                    </li>
+                     <li>
+                        <a href="GithubSearch.html"><i class="fa fa-github" style="color: white;"></i><span class="nav-label" style="color: white;">Github Search</span></a>
+                    </li>
+                     <li>
+                        <a href="GoogleBlogSearch.html"><i class="fa fa-filter" style="color: white;"></i><span class="nav-label" style="color: white;">Google Blogger Search</span></a>
+                    </li>
+                     <li>
+                        <a href="http://localhost:54828/TwitterAPI/TwitterSearch.aspx"><i class="fa fa-twitter" style="color: white;"></i><span class="nav-label" style="color: white;">Twitter Search</span></a>
+                    </li>
+                    <li>
+                        <a href="Statistics.html"><i class="fa fa-signal" style="color: white;"></i><span class="nav-label" style="color: white;">Statistics</span></a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #008B8B !important;">
+                    <div class="navbar-header" style="width: 400px;">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-warning visible-xs " href="#"><i class="fa fa-bars"></i></a>
+                        <h1 class="hidden-xs app-brand" style="display: inline; position: relative; top: 12px; color: white; font-size: 30px; margin-left: 28px; font-family: 'Times New Roman', Times, serif; font-weight: 300;">Blogger Locale</h1>
+                        <h3 class="visible-xs-inline-block app-brand" style="display: inline; position: relative; top: 16px; color: white; font-size: 16px; font-family: 'Times New Roman', Times, serif;">Blogger Locale</h3>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+
+                        <li>
+                            <a href="Logout.html">
+                                <i class="fa fa-sign-out" style="color: white"></i><span style="color: white; font-family: 'Times New Roman';">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                        
+                        
+                        
+                 <!-- Body Content -->
+ 
+ 
+ <div class="ibox-title">
+        <h5><strong>Create Post Here</strong></h5>
+        <div class="ibox-content">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Blogger Semantic Search</label>
+                  
+                    <div class="col-md-4">
+                        <input type="text" name="search" id="search" class="form-control">           
+                    </div>
+                     <div class="col-md-4" >
+                          <input class="btn btn-sm btn-primary" id="semanticsubmit" type="semanticsubmit" value="Search">           
+                    </div>
+                </div>
+                
+                 <div class="hr-line-dashed"></div>
+                <div class="form-group" id="results">
+                
+                     <!--Serach results will be showing here -->
+                     
+               </div>  
+            </form>
+        </div>
+    </div>
+    
+ 
+ 
+    
+    <!-- Footer Content -->
+    
+ 
+   </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer" style="background-color: white">
+                <div class="pull-right" style="color:#008B8B; font-family:'Times New Roman';font-size:medium;">
+                    <strong>Copyright</strong> Blogger Locale &copy; 2016
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="js/plugins/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+     
+    <script type="text/javascript" src="js/pages/semanticsearch.js"></script>
+   
+  
+</body>
+</html>
