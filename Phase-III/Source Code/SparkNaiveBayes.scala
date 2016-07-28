@@ -17,6 +17,9 @@
 
 package mlpipeline
 
+
+import java.io.File
+
 import ontInterface.OwlPizza
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.ml.Pipeline
@@ -29,14 +32,21 @@ import org.apache.spark.sql.{Row, SQLContext}
 import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.collection.immutable.HashMap
-
 object SparkNaiveBayes {
 
+  def getListOfFiles(dir: String):List[File] = {
+    val d = new File(dir)
+    if (d.exists && d.isDirectory) {
+      d.listFiles.filter(_.isFile).toList
+    } else {
+      List[File]()
+    }
+  }
 
   def main(args: Array[String]) {
-    System.setProperty("hadoop.home.dir", "C:\\Winutils")
+    System.setProperty("hadoop.home.dir", "C:\\winutils")
 
-    val trainFolder = "data/Categories/*"
+    val trainFolder = "Spark2Ont/data/Categories/*"
     val conf = new SparkConf().setAppName(s"NBExample").setMaster("local[*]").set("spark.driver.memory", "4g").set("spark.executor.memory", "4g")
     val sc = new SparkContext(conf)
 
@@ -48,8 +58,19 @@ object SparkNaiveBayes {
     val (input, corpus) =
       preprocess(sc, trainFolder)
 
+
+    input.collect.foreach(f => {
+      val location_array = f._1.split("/")
+      val class_name = location_array(location_array.length - 2)
+    })
+
     var hm = new HashMap[String, Int]()
-    val CATEGORIES = List("Blog", "SemanticSearch")
+    //val path ="Spark2Ont/data/categories/*"
+    //val files = getListOfFiles(path)
+    //var CATEGORIES = List.empty[String]
+    //files.foreach(f =>{CATEGORIES :+= f.getName.substring(0, f.getName.length - 4) })
+    val CATEGORIES = List("Search", "SemanticSearch")
+
     var index = 0
     CATEGORIES.foreach(f => {
       hm += CATEGORIES(index) -> index
@@ -60,21 +81,20 @@ object SparkNaiveBayes {
     val featureVector = data.map(f => {
       val location_array = f._1._1.split("/")
       val class_name = location_array(location_array.length - 2)
-
       new LabeledPoint(hm.get(class_name).get.toDouble, f._2)
     })
 
     val model = NaiveBayes.train(featureVector, lambda = 1.0, modelType = "multinomial")
 
-    val testDir = "data/test/*"
+    val testDir = "Spark2Ont/data/test/*"
 
-    val topicData = SparkLDAMain.main(sc, testDir, 7, "em")
+    val topicData = SparkLDAMain.main(sc, testDir, 5, "em")
 
     val testFV = getTFIDFVector(sc, topicData)
 
     val result = model.predict(testFV)
 
-    result.foreach(f => println(f))
+   // result.foreach(f => println(f))
 
     //Ontology creation
     val owl = new OwlPizza()
@@ -85,7 +105,8 @@ object SparkNaiveBayes {
 
     input.collect.foreach(f => {
       val location_array = f._1.split("/")
-      val class_name = location_array(location_array.length - 2)
+      val class_name = location_array(location_array.length - 1)
+     // val nclass_name =class_name.substring(0,class_name.length - 4)
       val array = f._2.split(" ")
       array.foreach(ff => {
         owl.createIndividual(":" + ff, class_name)
@@ -101,11 +122,28 @@ object SparkNaiveBayes {
     var i = 1
     resultData.map(f => {
       owl.createIndividual(":Topic" + i, ":Topic")
-      var className = ""
-      if (f._2 == 0)
-        className = ":Blog"
-      else
-        className = ":SemanticSearch"
+
+      print("\nCategory:")
+      println(f._2)
+      val inter =f._2.toInt
+      var className = CATEGORIES(inter)
+      println(className)
+
+
+
+
+
+      /*
+          var className = ""
+          if (f._2 == 0)
+            className = ":Search"
+          else
+            className = ":SemanticSearch"*/
+
+
+
+
+
 
       val array = f._1.split(" ")
       array.foreach(ff => {
